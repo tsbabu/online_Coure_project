@@ -1,0 +1,81 @@
+{% extends 'common.html' %}
+{% block pwn %}
+    {% include 'admin_page.html' %}
+    <form action="{% url 'course_update' %}" method="post">
+    {% csrf_token %}
+    <table align="center" border="2">
+    {% if data %}
+
+    <tr>
+        <th style="width: 300px;text-align: center; font-family: 'Agency FB'; background-color: green;color: white;font-size: 30px">
+            Update class Details
+
+        </th>
+
+    </tr>
+        <tr>
+        <th>
+            <input type="text" value="{{ data.cno }}" hidden class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="c" placeholder="Faculty_name" required>
+        </th>
+    </tr>
+    <tr>
+        <th>
+            <input
+                    type="text"
+                    name="c1"
+                    required
+                    value="{{ data.cname }}"
+                    placeholder="Course_name"
+                   class="form-control"
+                   aria-label="Sizing example input"
+                   aria-describedby="inputGroup-sizing-default">
+        </th>
+    </tr>
+    <tr>
+        <th>
+            <input type="text" value="{{ data.faculty }}" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="c2" placeholder="Faculty_name" required>
+        </th>
+    </tr>
+    <tr>
+        <th>
+            <input type="date" value="{{ data.class_date}}" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="c3" required>
+        </th>
+    </tr>
+    <tr>
+        <th>
+            <input type="time" value="{{ data.class_time}}" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="c4" placeholder="Timings" required>
+        </th>
+    </tr>
+    <tr>
+        <th>
+            <input type="number" value="{{ data.fees }}" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="c5" placeholder="fees" required>
+        </th>
+    </tr>
+    <tr>
+        <th>
+            <input type="number" value="{{ data.duration }}" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="duration" name="c6" required>
+        </th>
+    </tr>
+    <tr align="center">
+        <th>
+            <button type="submit" >submit</button>
+        </th>
+    </tr>
+        {% if messages %}
+            {% for msg in messages %}
+        <tr>
+            <th>
+                  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>{{ msg }}</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+            </th>
+        </tr>
+            {% endfor %}
+        {% endif %}
+    {% endif %}
+    </table>
+    </form>
+{% endblock %}

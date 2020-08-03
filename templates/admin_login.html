@@ -1,0 +1,12 @@
+{% extends 'common.html' %}
+{% block pwn %}
+    {% include 'admin_page.html' %}
+    {% load static %}
+    {{ user.username }}
+    <table>
+    <tr>
+        <th><img src="{%static 'images/home_mob1.jpg'  %}" width="600" height="500"></th>
+    </tr>
+    </table>
+
+{% endblock %}

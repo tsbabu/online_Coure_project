@@ -1,0 +1,39 @@
+{% load static %}
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Welcome</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'schedule_class' %}">Sehedule New class <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'viewall_schedules' %}">View all schedule</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="{% url 'adminlogout' %}">Logout</a>
+      </li>
+        <li class="nav-item">
+            <div class="btn-group">
+  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Enroll_courses
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="{% url 'course_view' %}?cname=python">Python</a>
+    <a class="dropdown-item" href="{% url 'course_view' %}?cname=corejava">CoreJava</a>
+    <a class="dropdown-item" href="{% url 'course_view' %}?cname=c">c</a>
+          <a class="dropdown-item" href="{% url 'course_view' %}?cname=cpp">cpp</a>
+          <a class="dropdown-item" href="{% url 'course_view' %}?cname=django">django</a>
+          <a class="dropdown-item" href="{% url 'course_view' %}?cname=advancdejava">AdvanceJava</a>
+      <a class="dropdown-item" href="{% url 'course_view' %}?cname=angular">angular</a>
+      <a class="dropdown-item" href="{% url 'course_view' %}?cname=datascience">datascience</a>
+
+
+</div>
+            </div>
+        </li>
+    </ul>
+  </div>
+</nav>

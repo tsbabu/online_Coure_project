@@ -1,0 +1,105 @@
+{% extends 'common.html' %}
+{% block pwn %}
+    <table border="2" align="center">
+     <tr><th width="250" style="text-align: center; background-color: chocolate"><a href="{% url 'student_enroll' %}">enroll_course</a></th><th width="250" style="text-align: center; background-color: blue"><a href="{% url 'view_enroll' %}?sname={{user.username}}">view_your_enroll_courses</a></th><th width="250" style="text-align: center; background-color: cyan"><a href="{% url 'student_logout' %}">logout</a></th></tr>
+    </table>
+    {{ user.username }}
+    {% if data1 %}
+
+        <table align="center" border="2">
+        <tr>
+            <th colspan="3" style="width: 300px;text-align: center;font-family: 'Agency FB';background-color: green;color: white;font-size: 30px">
+                Your enrolled courses
+            </th>
+        </tr>
+        {% if messages %}
+            {% for msg in messages %}
+        <tr>
+            <th colspan="9">
+                  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>{{ msg }}</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+            </th>
+        </tr>
+            {% endfor %}
+        {% endif %}
+
+        <tr>
+            <th>studentname</th><th>coursename</th><th>cancel</th>
+        </tr>
+            {% for a in data1 %}
+        <tr><th>{{ a.sname }}</th><th>{{ a.cname }}</th>
+                <th><a href="{% url 'cencel_enroll' %}?cname={{ a.cname }}&sname={{ user.username }}"><button type="submit">cancel</button></a></th>
+        {% endfor %}
+            </tr>
+        </table>
+
+    {% endif %}
+
+{% if data %}
+
+    <table align="center" border="2">
+        <tr>
+            <th colspan="9" style="width: 300px;text-align: center;font-family: 'Agency FB';background-color: green;color: white;font-size: 30px">
+                schedule calss details
+            </th>
+        </tr>
+    {% if messages %}
+            {% for msg in messages %}
+        <tr>
+            <th colspan="9">
+                  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>{{ msg }}</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+            </th>
+        </tr>
+            {% endfor %}
+        {% endif %}
+        <tr>
+            <th width="100">course_id</th>
+            <th width="100">course_name</th>
+            <th width="100">faculty</th>
+            <th width="100">course_date</th>
+            <th width="100">course_time</th>
+            <th width="100">fees</th>
+            <th width="100">duration</th>
+            <th width="100">Enroll</th>
+        </tr>
+
+            {% for x in data %}
+                <tr>
+            <th width="100">{{ x.cno }}</th>
+            <th width="150">{{ x.cname }}</th>
+            <th width="100">{{ x.faculty }}</th>
+            <th width="150">{{ x.class_date }}</th>
+            <th width="100">{{ x.class_time }}</th>
+            <th width="100">RS{{ x.fees}}/-</th>
+                <th width="100">{{ x.duration }}days</th>
+                    <th width="100"><a href="{% url 'enroll_course' %}?cname={{ x.cname }}&name={{ user.username }}"><button type="submit">enroll</button></a></th>
+                </tr>
+            {% endfor %}
+
+    </table>
+    {% endif %}
+    {% if data2 %}
+        {% for x in data2 %}
+            <table border="2" style="margin-left: 40px; margin-bottom: 10px; float: left;" class=" btn btn-secondary">
+                 <tr>  <th>Course_Name</th> <td>{{x.cname}}</td>  </tr>
+                    <tr> <th>Faculty</th>  <td>{{x.faculty}}</td> </tr>
+                    <tr> <th>class_date</th>   <td>{{x.class_date}}</td> </tr>
+                    <tr> <th>class_time</th> <td> {{x.class_time}}</td> </tr>
+                    <tr> <th>Fee</th>   <td>{{x.fees}}</td> </tr>
+                    <tr>  <th>Duration</th> <td>{{x.duration}} days</td> </tr>
+
+
+            </table>
+        {% endfor %}
+    {% endif %}
+
+{% endblock %}

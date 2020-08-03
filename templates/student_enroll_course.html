@@ -1,0 +1,38 @@
+{% extends 'common.html' %}
+{% block pwn %}
+    {% include 'studentpage.html' %}
+    <table align="center" border="2">
+        <tr>
+            <th colspan="9" style="width: 300px;text-align: center;font-family: 'Agency FB';background-color: green;color: white;font-size: 30px">
+                schedule calss details
+            </th>
+        </tr>
+        <tr>
+            <th width="100">course_id</th>
+            <th width="100">course_name</th>
+            <th width="100">faculty</th>
+            <th width="100">course_date</th>
+            <th width="100">course_time</th>
+            <th width="100">fees</th>
+            <th width="100">duration</th>
+            <th width="100">Enroll</th>
+        </tr>
+     {% if data %}
+            {% for x in data %}
+                <tr>
+            <th width="100">{{ x.cno }}</th>
+            <th width="150">{{ x.cname }}</th>
+            <th width="100">{{ x.faculty }}</th>
+            <th width="150">{{ x.class_date }}</th>
+            <th width="100">{{ x.class_time }}</th>
+            <th width="100">RS{{ x.fees}}/-</th>
+                <th width="100">{{ x.duration }}days</th>
+                <th width="100"><button type="submit">enroll</button></th>
+                </tr>
+            {% endfor %}
+        {% endif %}
+
+
+
+    </table>
+{% endblock %}

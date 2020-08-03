@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#php").blur(function () {
+                $.ajax(
+                    {
+                    url:'http://127.0.0.1:8000/phnocall/',
+                    type:"post",
+                    data:{"uname":$("#php").val()},
+                    success:function (responseData)
+                    {
+                        if(responseData["error"] !== undefined)
+                        {
+                            $("#one1").text(responseData["error"])
+                        }
+                        else {
+                            $("#one1").innerText(responseData["message"])
+                        }
+                    },
+                    failure:function () {
+                        alert("not ok")
+
+                    }
+                })
+
+            })
+
+        });
+    </script>
+</head>
+<body>
+<form  method="post" action="{% url 'enroll_course' %}">
+    {% csrf_token %}
+    <table>
+        <tr>
+            <th>
+                <input type="text" name="one" id="php" placeholder="name" required>
+                <span id="one1"></span>
+            </th>
+        </tr>
+         <tr>
+            <th>
+                <input type="email" name="two" placeholder="email" required>
+            </th>
+        </tr>
+         <tr>
+            <th>
+                <input type="number" name="three" placeholder="phno" required>
+            </th>
+        </tr>
+        <tr>
+            <th><button type="submit">register</button></th>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+{% extends 'common.html' %}
+{% block pwn %}
+    <h1><a href="{% url 'student_register' %}">Register</a></h1><br>
+    <h1><a href="{% url 'login_student' %}" >login</a></h1>
+    {% if messages %}
+        {% for msg in messages %}
+            <h1>{{ msg }}</h1>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

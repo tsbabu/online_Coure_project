@@ -1,0 +1,39 @@
+{% extends 'common.html' %}
+{% block pwn %}
+    {% include 'admin_page.html' %}
+    {% if qs %}
+    <table align="center" border="2">
+    <tr>
+            <th colspan="3" style="width: 300px;text-align: center;font-family: 'Agency FB';background-color: green;color: white;font-size: 30px">
+                Python enrolled details
+            </th>
+        </tr>
+    <tr>
+        <th>
+            student_name
+        </th>
+        <th>
+            course_name
+        </th>
+        <th>
+            phone_no
+        </th>
+    </tr>
+    {% for x in qs %}
+        <tr>
+        <th>{{ x.sname }}</th><th>{{ x.cname }}</th><th>{{ x.phno }}</th>
+        </tr>
+    {% endfor %}
+    </table>
+    {% endif %}
+
+    {% if messages %}
+            {% for msg in messages %}
+         {{ msg }}
+            {% endfor %}
+        {% endif %}
+    {% if error %}
+        <h1>{{ error }}</h1>
+    {% endif %}
+
+{% endblock %}
